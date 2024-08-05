@@ -2,6 +2,22 @@
 	<div>
 		<h2>게시글 목록</h2>
 		<hr class="my-4" />
+		<!-- filter -->
+		<form @submit.prevent>
+			<div class="row g-3">
+				<div class="col">
+					<input v-model="params.title_like" type="text" class="form-control" />
+				</div>
+				<div class="col-3">
+					<select v-model="params._limit" name="" id="" class="form-select">
+						<option value="3">3개씩 보기</option>
+						<option value="6">6개씩 보기</option>
+						<option value="9">9개씩 보기</option>
+					</select>
+				</div>
+			</div>
+		</form>
+		<hr class="my-4" />
 		<div class="row g-3">
 			<div v-for="post in posts" :key="post.id" class="col-4">
 				<PostItem
@@ -73,6 +89,7 @@ const params = ref({
 	_order: 'desc',
 	_page: 3, //현재 보여질 페이지
 	_limit: 3, //페이지에 보여질 총 글 갯수
+	title_like: null,
 });
 // pagination
 const totalCount = ref(0);
