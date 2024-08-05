@@ -5,9 +5,9 @@
 		<div class="row g-3">
 			<div v-for="post in posts" :key="post.id" class="col-4">
 				<PostItem
-					:title="post.title"
-					:content="post.content"
-					:created-at="post.createdAt"
+					:title="post?.title"
+					:content="post?.content"
+					:created-at="post?.createdAt"
 					@click="goPage(post.id)"
 				></PostItem>
 			</div>
@@ -32,8 +32,14 @@ import AppCardVue from '@/components/AppCard.vue';
 const router = useRouter();
 const posts = ref([]);
 
-const fetchPosts = () => {
-	posts.value = getPosts();
+const fetchPosts = async () => {
+	try {
+		// ({ data: posts.value } = await getPosts());
+		const { data } = await getPosts();
+		posts.value = data;
+	} catch (error) {
+		console.log('error: ', error);
+	}
 };
 fetchPosts();
 

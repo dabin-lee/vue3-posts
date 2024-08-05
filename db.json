@@ -1,0 +1,68 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "제목1",
+      "content": "hello1",
+      "createdAt": "2024-01-01"
+    },
+    {
+      "id": 2,
+      "title": "제목2",
+      "content": "hello2",
+      "createdAt": "2024-02-02"
+    },
+    {
+      "id": 3,
+      "title": "제목3",
+      "content": "hello3",
+      "createdAt": "2024-03-03"
+    },
+    {
+      "id": 4,
+      "title": "제목4",
+      "content": "hello4",
+      "createdAt": "2024-04-04"
+    },
+    {
+      "title": "axios 수정해썽요.",
+      "content": "안세영 화이팅!!",
+      "createdAt": "2024-05-05",
+      "id": 5
+    },
+    {
+      "id": 6,
+      "title": "제목6",
+      "content": "hello6",
+      "createdAt": "2024-06-06"
+    },
+    {
+      "title": "등록테스트",
+      "content": "다시해볼까요?",
+      "createdAt": "2024-08-05",
+      "id": 7
+    },
+    {
+      "title": "저에게 문의해주세요.",
+      "content": "어떤게 궁금하시죠?",
+      "createdAt": "2024-08-05",
+      "id": 8
+    },
+    {
+      "title": "이건 제목이 없었네요.",
+      "content": "왜죠",
+      "createdAt": "2024-08-05",
+      "id": 10
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

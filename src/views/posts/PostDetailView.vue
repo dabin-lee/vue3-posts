@@ -1,7 +1,8 @@
 <template>
 	<div>
-		<h2>{{ form.title }}</h2>
-		<p>{{ form.content }}</p>
+		<h2>{{ post.title }}</h2>
+		<p>{{ post.content }}</p>
+		<p>{{ post.createdAt }}</p>
 		<hr class="my-4" />
 		<div class="row g-2">
 			<div class="col-auto">
@@ -20,14 +21,14 @@
 				</button>
 			</div>
 			<div class="col-auto">
-				<button class="btn btn-outline-danger">삭제</button>
+				<button class="btn btn-outline-danger" @click="delPost">삭제</button>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script setup>
-import { getPostById } from '@/api/posts';
+import { getPostById, deletePost } from '@/api/posts';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -35,7 +36,6 @@ import { useRouter } from 'vue-router';
 const props = defineProps({
 	id: Number,
 });
-console.log('props: ', props);
 
 // const route = useRoute();
 const router = useRouter();
@@ -59,15 +59,39 @@ const goEditPage = () => {
  * (각 객체 내부 프로퍼티 값마다 변경은 불가능)
  *
  * reactive: 객체 재할당 불가능
- * (객체 내부에서 프로퍼티 값만 변경은 가능하다. form.value.title = res.title ...)
+ * (객체 내부에서 프로퍼티 값만 변경은 가능하다. post.value.title = res.title ...)
  */
-const form = ref({});
-// let form = reactive({});
+const post = ref({});
+// let post = reactive({});
 const fetchPost = () => {
-	const data = getPostById(props.id);
-	form.value = { ...data };
+	getPostById(props.id)
+		.then(res => {
+			// post.value = { ...res.data };
+			setPost(res.data);
+		})
+		.catch(err => console.log('error: ', err));
 };
 fetchPost();
+const setPost = ({ title, content, createdAt }) => {
+	post.value.title = title;
+	post.value.content = content;
+	post.value.createdAt = createdAt;
+};
+const delPost = async () => {
+	try {
+		// 안티패턴 줄이기 !confirm 대신 === false 표기/ if문의 depth를 깊어지지 않게 방지
+		if (confirm('삭제하시겠습니까?') === false) {
+			return;
+		}
+		await deletePost(props.id);
+		alert('삭제가 완료되었습니다.');
+		router.push({
+			name: 'PostList',
+		});
+	} catch (error) {
+		console.log('error: ', error);
+	}
+};
 </script>
 
 <style lang="scss" scoped></style>
