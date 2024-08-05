@@ -12,18 +12,25 @@
 				></PostItem>
 			</div>
 		</div>
+
+		<hr class="my-4" />
+		<AppCardVue>
+			<!-- 컴포넌트 재활용/ router 의존성 분리 후 props값 내리기 test -->
+			<ProductDetailView :id="1"></ProductDetailView>
+		</AppCardVue>
 	</div>
 </template>
 
 <script setup>
+import ProductDetailView from './PostDetailView.vue';
 import PostItem from '@/components/posts/PostItem.vue';
 import { getPosts } from '@/api/posts';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import AppCardVue from '@/components/AppCard.vue';
 
 const router = useRouter();
 const posts = ref([]);
-console.log('posts: ', ref);
 
 const fetchPosts = () => {
 	posts.value = getPosts();
@@ -33,7 +40,7 @@ fetchPosts();
 const goPage = postId => {
 	// router.push(`/posts/:${postId}`);
 	router.push({
-		name: 'postDetail',
+		name: 'PostDetail',
 		params: {
 			id: postId,
 		},

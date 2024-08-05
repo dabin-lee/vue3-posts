@@ -32,6 +32,11 @@
 								>게시글</RouterLink
 							>
 						</li>
+						<li class="nav-item">
+							<RouterLink class="nav-link" active-class="active" to="/nested"
+								>Nested</RouterLink
+							>
+						</li>
 					</ul>
 					<div class="d-flex">
 						<button class="btn btn-outline-dark" type="button" @click="goPage">
@@ -50,7 +55,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 const goPage = () => {
 	router.push({
-		name: 'postCreate',
+		name: 'PostCreate',
 	});
 };
 </script>

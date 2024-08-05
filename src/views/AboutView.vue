@@ -8,10 +8,6 @@
 	</div>
 </template>
 
-<script setup>
-import { useRoute } from 'vue-router';
-const route = useRoute();
-console.log('route: ', route.path);
-</script>
+<script setup></script>
 
 <style lang="scss" scoped></style>

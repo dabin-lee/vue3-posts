@@ -1,14 +1,14 @@
 <template>
-	<div class="card">
-		<div class="card-body">
-			<h5 class="card-title">{{ title }}</h5>
-			<p class="card-text">{{ content }}</p>
-			<p class="text-muted">{{ createdAt }}</p>
-		</div>
-	</div>
+	<AppCardVue>
+		<h5 class="card-title">{{ title }}</h5>
+		<p class="card-text">{{ content }}</p>
+		<p class="text-muted">{{ createdAt }}</p>
+	</AppCardVue>
 </template>
 
 <script setup>
+import AppCardVue from '../AppCard.vue';
+
 defineProps({
 	title: {
 		type: String,
