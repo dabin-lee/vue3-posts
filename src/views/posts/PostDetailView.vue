@@ -34,7 +34,7 @@ import { useRouter } from 'vue-router';
 
 // 라우터로 받는 파라미터를 props로 전달받기
 const props = defineProps({
-	id: Number,
+	id: String,
 });
 
 // const route = useRoute();

@@ -40,12 +40,12 @@ const routes = [
 		name: 'PostDetail',
 		component: PostDetailView,
 		//  파라미터가 해당 컴포넌트에 props형태로 전달 됨
-		// props: true  (boolean)
+		props: true,
 		// props: { newsletterPopup: false } (정적 일 때 유효)
-		props: route => ({
-			id: parseInt(route.params.id),
-			// other: route.query ... 그외 쿼리 등 사용 가능
-		}),
+		// props: route => ({
+		// 	id: parseInt(route.params.id),
+		// 	// other: route.query ... 그외 쿼리 등 사용 가능
+		// }),
 	},
 	{
 		path: '/posts/:id/edit',
