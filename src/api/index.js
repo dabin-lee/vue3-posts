@@ -10,5 +10,7 @@ function create(baseURL, options) {
 	return instance;
 }
 
-const baseURL = 'http://localhost:5000/posts';
-export const posts = create(baseURL);
+const baseUrl = import.meta.env.VITE_APP_API_URL;
+// console.log('baseUrl: ', `${baseUrl}/posts`);
+// const baseURL = 'http://localhost:5000/posts';
+export const posts = create(`${baseUrl}/posts`);

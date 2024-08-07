@@ -69,7 +69,7 @@
 		<hr class="my-5" />
 		<AppCardVue>
 			<!-- 컴포넌트 재활용/ router 의존성 분리 후 props값 내리기 test -->
-			<ProductDetailView :id="1"></ProductDetailView>
+			<ProductDetailView :id="'1'"></ProductDetailView>
 		</AppCardVue>
 	</div>
 </template>
